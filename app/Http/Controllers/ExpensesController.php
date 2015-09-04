@@ -42,8 +42,9 @@ class ExpensesController extends Controller
     {
         $expense = Expense::create($request->only(['description', 'base_amount']));
 
-        if($request->has('name')) {
-            $supplements = $this->parseSupplements($request);
+        if($request->has('supplement')) {
+            //$supplements = $this->parseSupplements($request);
+            $supplements = $request->get('supplement');
 
             // now we save the models to the database
             foreach($supplements as $id => $supplement) {
@@ -63,7 +64,7 @@ class ExpensesController extends Controller
      */
     public function show($id)
     {
-        $expense = Expense::findOrFail($id)->with('supplements')->first();
+        $expense = Expense::findOrFail($id);
         return view('expenses.show', compact('expense'));
     }
 
