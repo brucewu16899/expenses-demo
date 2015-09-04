@@ -43,14 +43,14 @@
         <div class="form-group">
             {!! Form::label('name', 'Supplement name', ['class' => 'col-sm-2 control-label']) !!}
             <div class="col-sm-10">
-                {!! Form::text('name', null, array('class' => 'form-control', 'name' => 'name['.$supplement->id.']' )) !!}
+                {!! Form::text('name', null, array('class' => 'form-control', 'name' => 'supplement['.$supplement->id.'][name]' )) !!}
             </div>
         </div>
 
         <div class="form-group">
             {!! Form::label('amount', 'Amount', ['class' => 'col-sm-2 control-label']) !!}
              <div class="col-sm-10">
-                 {!! Form::text('amount', null, array('class' => 'form-control', 'name' => 'amount['.$supplement->id.']')) !!}
+                 {!! Form::text('amount', null, array('class' => 'form-control', 'name' => 'supplement['.$supplement->id.'][amount]')) !!}
              </div>
         </div>
 
@@ -59,7 +59,7 @@
                 <div class="checkbox">
                     <label>
                         <?php $value = ($supplement['commissionable']=='1') ? 'checked' : ''; ?>
-                        <input type="checkbox" name="commissionable[{{ $supplement->id }}]" {{ $value }}> Commissionable ?
+                        <input type="checkbox" name="supplement[{{ $supplement->id }}][commissionable]" {{ $value }}> Commissionable ?
                     </label>
                 </div>
             </div>
