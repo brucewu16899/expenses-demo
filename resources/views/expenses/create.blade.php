@@ -44,7 +44,10 @@
                 if( $("#nosupplements").length) {
                     $("#nosupplements").remove();
                 }
-                $('#supplements').append(template);
+                var index = $('.js-new-supplement').length;
+
+                $('#supplements').append(template.replace('{index}', index));
+
             });
 
         });
