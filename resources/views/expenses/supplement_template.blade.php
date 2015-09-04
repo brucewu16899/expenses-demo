@@ -17,7 +17,8 @@
         <div class="col-sm-offset-2 col-sm-10">
             <div class="checkbox">
                 <label>
-                    {!! Form::checkbox('supplement[new_{index}][commissionable]') !!} Commissionable
+                    {!! Form::hidden('supplement[new_{index}][commissionable]', 0) !!}
+                    {!! Form::checkbox('supplement[new_{index}][commissionable]', 1) !!} Commissionable
                 </label>
             </div>
         </div>

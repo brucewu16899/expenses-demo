@@ -58,8 +58,9 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
+                        <input type="hidden" name="supplement[{{ $supplement->id }}][commissionable]" value="0" />
                         <?php $value = ($supplement['commissionable']=='1') ? 'checked' : ''; ?>
-                        <input type="checkbox" name="supplement[{{ $supplement->id }}][commissionable]" {{ $value }}> Commissionable ?
+                        <input type="checkbox" name="supplement[{{ $supplement->id }}][commissionable]" {{ $value }} value="1"> Commissionable ?
                     </label>
                 </div>
             </div>
