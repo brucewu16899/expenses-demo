@@ -94,9 +94,10 @@ class ExpensesController extends Controller
         $expense->save();
 
         // construct and save the expense supplements
-        if($request->has('name')) {
+        if($request->has('supplement')) {
 
-            $supplements = $this->parseSupplements($request);
+            //$supplements = $this->parseSupplements($request);
+            $supplements = $request->get('supplement');
 
             // now we save the models to the database
             foreach($supplements as $id => $supplement) {
