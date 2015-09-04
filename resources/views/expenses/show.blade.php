@@ -43,14 +43,14 @@
         <div class="form-group">
             {!! Form::label('name', 'Supplement name', ['class' => 'col-sm-2 control-label']) !!}
             <div class="col-sm-10">
-                {!! Form::text('name', null, array('class' => 'form-control', 'name' => 'name['.$supplement->id.']' )) !!}
+                {!! Form::text('name', null, array('class' => 'form-control', 'name' => 'supplement['.$supplement->id.'][name]' )) !!}
             </div>
         </div>
 
         <div class="form-group">
             {!! Form::label('amount', 'Amount', ['class' => 'col-sm-2 control-label']) !!}
              <div class="col-sm-10">
-                 {!! Form::text('amount', null, array('class' => 'form-control', 'name' => 'amount['.$supplement->id.']')) !!}
+                 {!! Form::text('amount', null, array('class' => 'form-control', 'name' => 'supplement['.$supplement->id.'][amount]')) !!}
              </div>
         </div>
 
@@ -58,8 +58,9 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label>
+                        <input type="hidden" name="supplement[{{ $supplement->id }}][commissionable]" value="0" />
                         <?php $value = ($supplement['commissionable']=='1') ? 'checked' : ''; ?>
-                        <input type="checkbox" name="commissionable[{{ $supplement->id }}]" {{ $value }}> Commissionable ?
+                        <input type="checkbox" name="supplement[{{ $supplement->id }}][commissionable]" {{ $value }} value="1"> Commissionable ?
                     </label>
                 </div>
             </div>
@@ -83,7 +84,9 @@
             // functionality for the 'Add one' button
             var template = $('#hidden-template').html();
             $('#add_supplement').click(function() {
-                $('#supplements').append(template);
+                var index = $('.js-new-supplement').length;
+
+                $('#supplements').append(template.replace(/\{index\}/g, index));
             });
 
             // fancy auto-closing alert
