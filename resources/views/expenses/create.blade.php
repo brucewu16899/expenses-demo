@@ -46,7 +46,7 @@
                 }
                 var index = $('.js-new-supplement').length;
 
-                $('#supplements').append(template.replace('{index}', index));
+                $('#supplements').append(template.replace(/\{index\}/g, index));
 
             });
 

@@ -84,7 +84,9 @@
             // functionality for the 'Add one' button
             var template = $('#hidden-template').html();
             $('#add_supplement').click(function() {
-                $('#supplements').append(template);
+                var index = $('.js-new-supplement').length;
+
+                $('#supplements').append(template.replace(/\{index\}/g, index));
             });
 
             // fancy auto-closing alert
